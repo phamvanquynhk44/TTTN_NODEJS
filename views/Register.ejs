@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <title> lam trang gearvn</title>
+  <meta charset="utf-8">
+  <%- include('partial/linkData') %>
+<body>
+  <% contentHeader.forEach(function(contentHeaderItem){ %>
+    <%- include(contentHeaderItem.view, contentHeaderItem.data) %>
+  <% }) %>
+
+
+<!-- Tạo tài khoản -->
+          <div id="login">
+            <h1>Tạo tài khoản</h1>
+                <form action="/doRegister" method="post">
+                    <div class="f-e">
+                      <span><i class="fa fa-user"></i></i></span>
+                      <input type="text" id="surname" name="surname" placeholder="Họ" required><br>
+                  </div>
+                    <div class="f-e">
+                        <span><i class="fa fa-user"></i></span>
+                        <input type="text" name="name" placeholder="Tên" required>
+                    </div>
+                    <div class="f-e">
+                        <span><i class="fa fa-envelope"></i></span>
+                        <input type="email" id="email" name="email" placeholder="Email" required><br>
+                        <span id="email_error"></span>
+                    </div>
+                    <div class="f-e">
+                        <span><i class="fa fa-phone"></i></span>
+                        <input type="number" min="0" max="9999999999" id="phone" name="phone" placeholder="phone" required><br>
+                        <span id="phone_error" style="color: red;"></span>
+                    </div>
+                    <div class="f-pass">
+                        <span><i class="fa fa-lock"></i></span>
+                        <input type="password" id="psw" name="pass" placeholder="Mật khẩu" required><br>                                                              
+                        <span id="password_error" ></span>   
+                        <span><input type="checkbox" class="showpass" onclick="myFunction()"><p>Hiển thị mật khẩu</p></span>                       
+                    </div>
+<!--                     <div id="message">                     
+                      <h3>Mật khẩu phải có nội dung sau:</h3>
+                      <p id="letter" class="invalid"><b>Chữ thường</p>
+                      <p id="capital" class="invalid"><b>Chữ hoa</p>
+                      <p id="number" class="invalid"><b>Số</b></p>
+                      <p id="length" class="invalid">Tối thiểu 8 ký tự</b></p>
+                    </div> -->
+                    <div class="btn-r">
+                        <button onclick="return validate();" id="btn">Đăng ký</button>
+                    </div>
+                </form> 
+               <div  style="color: red;"><h2><%= message %></h2></div>  
+               
+          </div>
+
+
+
+
+
+          
+
+          <%- include('partial/footer') %>
+    </body>
+    <script src="/js/DK.js"></script>
+    <script src="/js/DN.js"></script>
+    <script src="/js/menu.js"></script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <%- include('partial/linkData') %>
+    </head>
+
+    <body>
+      <% contentHeader.forEach(function(contentHeaderItem){ %>
+        <%- include(contentHeaderItem.view, contentHeaderItem.data) %>
+      <% }) %>
+
+          <div id="login">
+            <h1>Phục Hồi Mật Khẩu</h1>
+            <form action="/doResetpass" method="post">
+              <div class="f-pass">
+                <span><i class="fa fa-lock"></i></span>
+                <input type="password" id="psw" name="pass" placeholder="Mật khẩu mới" required><br>
+                <span><input type="checkbox" class="showpass" onclick="myFunction()"><p>Hiển thị mật khẩu</p></span> 
+                <input type="hidden" name="token" value="<%= token %>">
+            </div>
+                    <div class="btn-login">
+                        <button>Gửi</button>
+                    </div>
+                </form>   
+          </div>
+
+
+  
+          <%- include('partial/footer') %>
+    
+
+    </body>
+   <script>
+// Đây là thanh kéo lên trên 
+// Get the button
+let mybutton = document.getElementById("myBtn");
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+function myFunction() {
+  var x = document.getElementById("psw");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+   </script>
+</html>

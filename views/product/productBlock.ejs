@@ -1,0 +1,79 @@
+
+     <div class="content">
+      <div class="pc">
+        <h2><%= titlePC%></h2>
+        <a href="#">Xem tất cả ></a>
+     </div> 
+     <main>
+        <ul class="product" id="paginated-list" data-current-page="1" aria-live="polite">
+          <% productPC.forEach(function(productPC){ %>
+              <li>
+                <div class="product-item">
+                  <div class="product-top">
+                    <a href="/detail/<%= productPC.id%>" class="product-thumb">
+                      <img src="/img/product/<%= productPC.alias%>/<%= productPC.image%>" alt="">
+                    </a>
+                    <a href="/detail/<%= productPC.id%>" class="buy-now">Đặt hàng</a>
+                    <!--Click để xem chi tiết
+                    Đặt hàng -->
+                  <div class="product-info">
+                    <a href="/detail/<%= productPC.id%>" class="product-name"><%= productPC.product_name%></a>
+                    <a href="/detail/<%= productPC.id%>" class="product-price"><%= productPC.price%>₫</a>
+                  </div>
+                </div>
+                </div>
+              </li> 
+              <% }) %>  
+        </ul>  
+     
+      <nav class="pagination-container">
+        <button class="pagination-button" id="prev-button" aria-label="Previous page" title="Previous page">
+          &lt;
+        </button>
+    
+        <div id="pagination-numbers">
+    
+        </div>
+    
+        <button class="pagination-button" id="next-button" aria-label="Next page" title="Next page">
+          &gt;
+        </button>
+      </nav>
+    </div>  
+    </main>
+    <script src="/js/pagination.js"></script>
+
+                  <!-- laptop -->
+                  <div class="contentLaptop">
+                    <div class="pc">
+                      <h2><%= titleLaptop%></h2>
+                      <a href="#">Xem tất cả ></a>
+                   </div>                
+                    <ul class="product">
+                        <% productLaptop.forEach(function(productLaptop){ %>
+                            <li>
+                              <div class="product-item">
+                                <div class="product-top">
+                                  <a href="/detail/<%= productLaptop.id%>" class="product-thumb">
+                                  <img src="/img/product/<%= productLaptop.alias%>/<%= productLaptop.image%>" alt="">
+                                  </a>
+                                  <a href="/detail/<%= productLaptop.id%>" class="buy-now">Đặt hàng</a>
+                                  <!--Click để xem chi tiết
+                                  Đặt hàng -->
+                                <div class="product-info">
+                                  <a href="/detail/<%= productLaptop.id%>" class="product-name"><%= productLaptop.product_name%></a>
+                                  <a href="/detail/<%= productLaptop.id%>" class="product-price"><%= productLaptop.price%>₫</a>
+                                </div>
+                              </div>
+                              </div>
+                            </li> 
+                            <% }) %>  
+                      </ul> 
+                    </div> 
+
+
+          
+                    
+    
+
+     

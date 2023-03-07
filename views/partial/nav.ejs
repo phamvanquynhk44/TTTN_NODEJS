@@ -1,0 +1,33 @@
+
+<div class="navbar">
+
+    <% menu.forEach(function(Item){ %>
+      <% if(Item.parent == 0) { %>
+    <div class="dropdown">
+              <button class="dropbtn">
+                <img src="/img/logo/<%= Item.img_logo_menu %>" alt=""><%= Item.menu_name %>
+                <i class="fa fa-caret-down"></i>
+              </button>
+    
+              <div class="dropdown-content"> 
+
+                <div class="row">
+                  <% menu.forEach(function(Item1){ %>
+                    <% if(Item1.parent == Item.id) { %>	
+                  <div class="column">
+                    <h3><a href="/collections/<%= Item1.id %>"><%= Item1.menu_name %></a></h3>
+                    <% menu.forEach(function(Item2){ %>
+                      <% if(Item2.parent == Item1.id) { %> 
+                    <a href="/detail/<%= Item2.id %>"><%= Item2.menu_name %></a>
+                    <% } %>
+                    <% }) %>
+                  </div>  
+                  <% } %>
+                  <% }) %> 
+        </div>
+      </div>
+    </div>
+    <% } %>
+    <% }) %> 
+  </div>
+  

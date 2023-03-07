@@ -1,0 +1,98 @@
+
+#login{ 
+    border: 1px solid #f0f0f0;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#login input{
+    text-indent: 15px;
+    font-size: 26px;
+    width: 40%;
+}
+
+h1, .h1 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.f-e, .f-pass{
+    margin-bottom: 20px;
+    width: 100%;
+   display: table;  
+}
+.f-e span i{
+    padding: 6px 12px;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.f-pass span i{
+    padding: 6px 14px;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.btn-login button{
+    padding: 6px 12px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.7;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;  
+}
+.btn-login button:hover{
+    color: white;
+    background-color: black;
+}
+
+.btn-r button{
+    padding: 6px 12px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.7;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;  
+}
+.btn-r button:hover{
+    color: white;
+    background-color: black;
+}
+.for{
+    margin-bottom: 20px;
+}
+.for a:hover{
+    color: red;
+}
+
+
+
+

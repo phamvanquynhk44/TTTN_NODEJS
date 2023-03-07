@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <%- include('partial/linkData') %>
+    </head>
+
+    <body>
+      
+      <% contentHeader.forEach(function(contentHeaderItem){ %>
+        <%- include(contentHeaderItem.view, contentHeaderItem.data) %>
+      <% }) %>
+          
+
+      <% contentMenu.forEach(function(contentMenuItem){ %>
+        <%- include(contentMenuItem.view, contentMenuItem.data) %>
+      <% }) %>
+          
+
+          <div class="banner-c">
+            <img src="/img/banner/acer_nitro_cls_18021943469f46b686ab582fb8725b88.webp" alt="" style="width: 100%;">
+          </div>
+
+         
+            <div class="dropdown-c">
+                Sắp xếp theo:
+                <select class="select-c">   
+                    <option value="">Sản phẩm nổi bậc</option> 
+                    <option value="">Giá: Tăng dần</option>
+                    <option value="">Giá: Giảm dần</option>
+                    <option value="">Tên: A-Z</option> 
+                    <option value="">Tên: Z-A</option> 
+                    <option value="">Cũ nhất</option> 
+                    <option value="">Mới nhất</option> 
+                    <option value="">Bán chạy nhất</option>   
+                </select>
+             </div>
+
+
+      <% content.forEach(function(contentItem){ %>
+        <%- include(contentItem.view, contentItem.data) %>
+      <% }) %>
+
+
+              
+      <%- include('partial/footer') %>
+
+    </body>
+    <script src="/js/collections.js"></script>
+    <script src="/js/menu.js"></script>
+    <script src="/js/paginationCollections.js"></script>
+</html>
