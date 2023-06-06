@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      
+    </head>
+
+    <body>
+   
+      <% content.forEach(function(contentItem){ %>
+        <%- include(contentItem.view, contentItem.data) %>
+      <% }) %>
+              
+    </body>
+</html>

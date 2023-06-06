@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/backend.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ 
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
+<script> 
+</script> 
+</head>
+<body>
+
+  <%- include('../partial/header') %>
+        <h1 style="text-align: center;">Xem chi tiết tài khoản</h1> 
+        <div class="functionb">
+          <a href="/accountBackend/<%=token%>"><button class="btnb infob">Quay về</button></a>      
+          </a>
+        </div>
+        
+      </div>
+
+      <div class="container">
+        <table class="table table-striped table-bordered" style="width:100%">
+              <thead>
+                  <tr>
+                    <th>Tên trường</th>
+                    <th>Giá trị</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <% showUserId.forEach(function(item){ %>
+                  <tr>
+                      <td>Id</td>
+                      <td><%= item.id %></td>     
+                    </tr> 
+                    <tr>
+                      <td>Vai trò</td>
+                      <td>
+                        <% if(item.user == "admin" ) {%>
+                          Quản trị viên
+                          <% } %>
+                          <% if(item.user == 'user' ) {%>
+                            Khách hàng
+                            <% } %>
+                      </td>     
+                    </tr>
+                    <tr>
+                      <td>Mã xác nhận tài khoản</td>
+                      <td><%= item.idAuthority %></td>     
+                    </tr>
+                    <tr>
+                      <td>Mật khẩu (Đã mã hoá)</td>
+                      <td><%= item.password %></td>     
+                    </tr>
+                    <tr>
+                      <td>Họ tên tài khoản</td>
+                      <td><%= item.surname %> <%= item.name %></td>     
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td><%= item.email %></td>     
+                    </tr>
+                    <tr>
+                      <td>Số điện thoại</td>
+                      <td><%= item.phone  %></td>     
+                    </tr>
+                    <tr>
+                      <td>Địa chỉ</td>
+                      <td>
+                        <% if(item.address == null ) {%>
+                          Tài khoản chưa thêm địa chỉ
+                          <% } %>
+                        <%= item.address %>
+                      </td>     
+                    </tr>
+                    <tr>
+                      <td>Ngày lặp</td>
+                      <td><%= item.created_at %></td>     
+                    </tr>
+                    <tr>
+                      <td>Tình trạng</td>
+                      <td> 
+                        <% if(item.status == 1 ) {%>
+                          Mở
+                          <% } %>  
+                          <% if(item.status == 0 ) {%>
+                            Tắt
+                            <% } %>                    
+                      </td>     
+                    </tr>
+                  <% }) %>
+              </tbody>
+          </table>
+      </div>
+
+  </div>  
+</body>
+<script src="/js/backendP.js"></script>
+</html> 

@@ -1,0 +1,33 @@
+{
+  "name": "node-tttn-phamvanquynh",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "build": "node ./bin/www",
+    "dredeloy": "npm run start",
+    "deloy": "gh-pages -d start"
+  },
+  "dependencies": {
+    "build": "^0.1.4",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "gh-pages": "^5.0.0",
+    "http-errors": "~1.6.3",
+    "mailgen": "^2.0.27",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.20"
+  },
+  "homepage": "http://phamvanquynhk44.github.io/TTTN_NODEJS",
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "should": "^13.2.3"
+  }
+}

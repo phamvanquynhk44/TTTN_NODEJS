@@ -1,0 +1,69 @@
+
+<div class="content">
+  <div class="pc">
+    <h2><%= titlePC%></h2>
+    <a href="#"></a>
+ </div> 
+ <main>
+    <ul class="product" id="paginated-list" data-current-page="1" aria-live="polite">
+      <% productPC.forEach(function(productPC){ %>
+          <li>
+            <div class="product-item">
+              <div class="product-top">
+                <a href="/detail/<%= productPC.id%>" class="product-thumb">
+                  <img src="/img/product/<%= productPC.image%>" alt="" width="100%" height="250px">
+                </a>
+                <% if(typeof name === 'undefined'){ %>		 
+                  <a href="/Login" class="buy-now">Đặt hàng</a>                   			
+                  <% 
+                  }else{ %>   
+                    <a href="/addToCart/<%= productPC.id%>" class="buy-now">Đặt hàng</a>                           																													
+                  <%
+                  }
+                  %> 
+                <!--Click để xem chi tiết
+                Đặt hàng -->
+              <div class="product-info">
+                <a href="/detail/<%= productPC.id%>" class="product-name"><%= productPC.product_name%></a>
+                <% if(typeof name === 'undefined'){ %>		 
+                  <a href="/Login">
+                    <button class="favorite"><i class="fa fa-heart"></i> <span>Theo dõi</span></button>
+                  </a>                   			
+                  <% 
+                  }else{ %>  
+                        <a href="/addFavorite/<%= idAuthority %>/<%= productPC.id%>/1">
+                          <button  class="favorite"><i class="fa fa-heart"></i> <span>Theo dõi</span></button>
+                        </a>  
+                  <%
+                  }
+                  %>
+                <a href="/detail/<%= productPC.id%>" class="product-price"><%= productPC.price%> vn₫</a>
+              </div>
+            </div>
+            </div>
+          </li> 
+          <% }) %>  
+    </ul>  
+ 
+  <nav class="pagination-container">
+    <button class="pagination-button" id="prev-button" aria-label="Previous page" title="Previous page">
+      &lt;
+    </button>
+
+    <div id="pagination-numbers">
+
+    </div>
+
+    <button class="pagination-button" id="next-button" aria-label="Next page" title="Next page">
+      &gt;
+    </button>
+  </nav>
+</main>
+</div>  
+
+
+
+
+    
+
+     

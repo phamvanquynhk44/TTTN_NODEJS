@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/backend.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ 
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
+</head>
+<body>
+
+  <%- include('../partial/header') %>
+        <h1 style="text-align: center;">Đơn hàng</h1> 
+        <div class="functionb">
+          <a href="/orderStatus/<%=token%>/<%=id%>/0/0"><button class="btnb dangerb">Huỷ đơn hàng</button></a>
+          <a href="/orderStatus/<%=token%>/<%=id%>/2/0"><button class="btnb warningb">Đang giao</button></a>
+          <a href="/orderStatus/<%=token%>/<%=id%>/3/1"><button class="btnb successb">Đã giao</button></a>
+          <a href="/order/<%=token%>"><button class="btnb infob">Quay về</button></a>
+        </div>
+      </div>
+
+      <div class="container">
+        <h2 style="color: crimson;">Thông tin đơn hàng</h2>
+        <table class="table table-bordered" style="width:100%">
+          <thead>
+              <tr>
+                <th>Tên khách hàng</th>
+                <th>email</th>
+                <th>Số điện thoại</th>
+                <th>Địa chỉ</th>
+                <th>Ngày đặt</th>
+                <th>Thanh toán bằng</th>
+                <th>Tình trạng thanh toán</th>
+                <th>Tình trạng đơn hàng</th>
+              </tr>
+          </thead>
+          <tbody>
+            <% i=0; showOrder.forEach(function(item){ %>
+              <tr>
+                  <td><%= item.fullname %></td>
+                  <td><%= item.email %></td>
+                  <td><%= item.phone %></td>
+                  <td><%= item.address %></td>
+                  <td><%= item.order_date %></td>
+                  <td>
+                    <% if(item.payment==1) {%>
+                      COD
+                  <% } %>
+                  </td>
+                  <td>
+                    <% if(item.delivered==0) {%>
+                      Chưa thanh toán
+                  <% } %>
+                  <% if(item.delivered==1) {%>
+                    Đã thanh toán
+                <% } %>
+                  </td>
+                  <td>
+                    <% if(item.status==0) {%>
+                      Đã huỷ
+                  <% } %>
+                    <% if(item.status==1) {%>
+                      Mới 
+                  <% } %>
+                  <% if(item.status==2) {%>
+                    Đang giao
+                <% } %>
+                <% if(item.status==3) {%>
+                  Đã giao 
+              <% } %>
+                  </td>
+                </tr>       
+              <% i++; }) %>
+          </tbody>
+      </table>
+      <h2 style="color: crimson;">Chi tiết đơn hàng</h2>
+        <table  class="table table-striped table-bordered" style="width:100%">
+              <thead>
+                  <tr>
+                    <th>Thứ tự</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Ảnh sản phẩm</th>
+                    <th>Giá sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <% i=0; showOrderDetail.forEach(function(item){ %>
+                    <tr>
+                        <td><%= i+1 %></td>
+                        <td>
+                          <% showOrderProduct.forEach(function(item1){ %> 
+                            <% if(item1.id == item.product_id ) {%>
+                              <%= item1.product_name %> 
+                          <% } %>     
+                            <% }) %>   
+                        </td>
+                        <td>
+                          <% showOrderProduct.forEach(function(item1){ %> 
+                            <% if(item1.id == item.product_id ) {%>
+                               <img src="/img/product/<%= item1.image %>" style="width: 100px;" alt="<%= item1.product_name %>">
+                          <% } %>     
+                            <% }) %>
+                        </td>
+                        <td>
+                          <% showOrderProduct.forEach(function(item1){ %> 
+                            <% if(item1.id == item.product_id ) {%>
+                               <%= item1.price %> vnđ 
+                          <% } %>     
+                            <% }) %>
+                        </td>
+                        <td><%= item.qty %></td>
+                        <td>
+                          <% showOrderProduct.forEach(function(item1){ %> 
+                            <% if(item1.id == item.product_id ) {%>
+                               <%= item1.price*item.qty %> vnđ 
+                          <% } %>     
+                            <% }) %>
+                        </td>                              
+                      </tr>                         
+                    <%      
+                    i++; }) %>
+                    
+              </tbody>
+              <td colspan="5"><h2 style="color: crimson;">Tổng cộng</h2></td><td><span id="val"></span> vnđ</td>          
+          </table>
+
+          <table id="table" border="1" style="display: none;">
+            <tr>
+                <th>Value</th>
+            </tr>
+            <% i=0; showOrderDetail.forEach(function(item){ %>
+              <tr>
+                  <td>
+                    <% showOrderProduct.forEach(function(item1){ %> 
+                      <% if(item1.id == item.product_id ) {%>
+                         <%= item1.price*item.qty %> vnđ 
+                    <% } %>     
+                      <% }) %>
+                  </td>                              
+                </tr>                         
+              <%      
+              i++; }) %>
+        </table>
+      </div>
+  </div>  
+</body>
+<script src="/js/backendP.js"></script>
+</html> 

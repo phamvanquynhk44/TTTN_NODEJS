@@ -1,0 +1,353 @@
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+}
+
+.container i{
+    display: flex;
+    font-size: 48px;
+}
+
+#category{
+    background: #f1f0f1;
+    padding: 8px 12px;
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.main-menu{
+    display: flex;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+.main-menu li {
+    position: relative;
+}
+
+.main-menu li img{
+  width: 20px;
+}
+
+.sub-menu li img{
+  width: 10px;
+  
+}
+
+.main-menu li:hover>a {
+    color: white;
+     background-color: #e63642;
+}
+
+.main-menu li a{
+    color: #1c1e21;
+    display: block;
+    padding: 14px 20px;
+    text-decoration: none;
+    /* border: 1px solid wheat; */
+}
+
+.main-menu ul.sub-menu {
+    position: absolute;
+    background: #f1f0f1;
+    list-style: none;
+    padding: 15px 0;
+    width: 200px;
+    display: none;
+    
+}
+.main-menu li:hover>ul.sub-menu{
+    display: block;
+    border: 1px solid #d4d4d4;
+}
+
+.main-menu ul.sub-menu a{
+    padding: 8px 15px;
+    left: 0;
+}
+
+.main-menu ul.sub-menu li:hover>a{
+    color: white;
+    background: #e63642;
+    border: 1px solid blue;
+}
+
+.main-menu ul.sub-menu li:last-child a{
+    border: none;
+}
+
+.main-menu ul.sub-menu ul.sub-menu{
+    left: 199px;
+    top: -15px;
+}  
+          /* Slideshow container */
+          .slideshow-container {
+            max-width: 2000px;
+            position: relative;
+            margin: auto;
+            margin-top: 10px;
+            width: 100%;
+          }
+          
+          /* Next & previous buttons */
+          .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+          }
+          
+          /* Position the "next button" to the right */
+          .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+          }
+          
+          /* On hover, add a black background color with a little bit see-through */
+          .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+          }
+          
+          /* Caption text */
+          .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+          }
+          
+          /* Number text (1/3 etc) */
+          .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+          }
+          
+          /* The dots/bullets/indicators */
+          .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+          }   
+          .active, .dot:hover {
+            background-color: #717171;
+          }
+          
+          /* Fading animation */
+          .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+          }
+          
+          @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+          }
+          
+          /* On smaller screens, decrease text size */
+          @media only screen and (max-width: 300px) {
+            .prev, .next,.text {font-size: 11px}
+          }
+
+          
+
+          #myBtn {
+            display: none;
+            position: fixed;
+            width: 40px;
+            height: 45px;
+            bottom: 20px;
+            right: 4px;
+            z-index: 1;
+            border: none;
+            outline: none;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            padding: 0px 5px;
+            border-radius: 4px;
+          }
+          
+          #myBtn:hover {
+            background-color: #555;
+          }
+
+/* sticky header */
+header{
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+
+
+/* Phần css Đăng ký */
+    /* The message box is shown when the user clicks on the password field */
+    #message {
+      display:none;
+      color: #000;
+      position: relative;
+    }
+    
+    #message p {
+      margin-left: 490px;
+      display: flex;
+    }
+    
+    /* Add a green text color and a checkmark when the requirements are right */
+    .valid {
+      color: green;
+    }
+    
+    .valid:before {
+      position: relative;
+      left: -35px;
+      content: "✔";
+    }
+    
+    /* Add a red text color and an "x" when the requirements are wrong */
+    .invalid {
+      color: red;
+    }
+    
+    .invalid:before {
+      position: relative;
+      left: -35px;
+      content: "✖";
+    }
+
+    .notification {
+      color: white;
+      text-decoration: none;
+      padding: 15px 26px;
+      position: relative;
+      display: inline-block;
+      border-radius: 2px;
+    }
+    
+    .notification .badge {
+      position: absolute;
+      padding: 5px 10px;
+      border-radius: 50%;
+      background-color: red;
+      color: white;
+    }
+
+    #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    #customers tr th{
+      text-align: center;
+    }
+    #customers tr td{
+      text-align: center;
+    }
+    
+    #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #customers tr:hover {background-color: #ddd;}
+    
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #04AA6D;
+      color: white;
+    }
+
+    .btnb {
+      border: none;
+      color: white;
+      padding: 14px 28px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .functionb{
+      float: right;
+      margin-right: 180px;
+      margin-bottom: 10px;
+    }
+
+    .successb {background-color: #04AA6D;} /* Green */
+    .successb:hover {background-color: #46a049;color:red;}
+    
+    .infob {background-color: #2196F3;} /* Blue */
+    .infob:hover {background: #0b7dda;color:red;}
+    
+    .warningb {background-color: #ff9800;} /* Orange */
+    .warningb:hover {background: #e68a00;color: red;}
+    
+    .dangerb {background-color: #f41505;} /* Red */ 
+    .dangerb:hover {background: #da190b;color: red;}
+    
+    .defaultb {background-color: #e7e7e7; color: red ;} /* Gray */ 
+    .defaultb:hover {background: #ddd; color: red;}
+
+
+
+    .favorite{
+      color: #fff;
+      background-color: #5cb85c;
+      border-color: #4cae4c;
+      padding: 7px;
+    }
+
+    .favorite:hover{
+      color: #afafaf;
+      background-color: #138f13;
+      border-color: #138f13;   
+    }
+
+
+    .favorite1{
+      color: #fff;
+      background-color: crimson;
+      border-color: crimson;
+      padding: 7px;
+    }
+
+    .favorite1:hover{
+      color: #afafaf;
+      background-color: rgb(157, 15, 43);
+      border-color:  rgb(157, 15, 43);  
+      
+
+     
+    }
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <%- include('partial/linkData') %>
+    </head>
+
+    <body>
+      <% contentHeader.forEach(function(contentHeaderItem){ %>
+        <%- include(contentHeaderItem.view, contentHeaderItem.data) %>
+      <% }) %>
+
+<!-- ĐĂNG NHẬP -->
+          <div id="login">
+            <h1>Phục Hồi Mật Khẩu</h1>
+            <h3>Sử dụng được cho tài khoản quản trị viên</h3>
+            <form action="/sendMail" method="post">
+                    <div class="f-e">
+                        <span><i class="fa fa-envelope"></i></span>
+                        <input type="email" id="emailOrPhone" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="btn-login">
+                        <button>Gửi</button>
+                    </div>
+                </form>              
+                <div  style="color: red;"><h2><%= message %></h2></div>     
+          </div>
+
+  
+          <%- include('partial/footer') %>
+    
+
+    </body>
+    <script src="./js/DN.js"></script>
+    <script src="./js/menu.js"></script>
+    <script>
+
+      </script>
+</html>

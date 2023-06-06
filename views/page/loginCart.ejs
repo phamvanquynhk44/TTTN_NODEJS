@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      
+    </head>
+    <body>
+
+<!-- ĐĂNG NHẬP -->
+          <div id="login">
+            <h1>Đăng nhập</h1>
+            <form action="/doLoginCart" method="post">
+                    <div class="f-e">
+                        <span><i class="fa fa-envelope"></i></span>
+                        <input type="text" id="emailOrPhone" name="emailOrPhone" placeholder="Email hoặc số điện thoại" required>
+                        <input type="hidden" name="token" value="<%=token%>">
+                    </div>
+                    <div class="f-pass">
+                        <span><i class="fa fa-lock"></i></span>
+                        <input type="password" id="psw" name="pass" placeholder="Mật khẩu" required><br>
+                        <span><input type="checkbox" class="showpass" onclick="myFunction()"><p>Hiển thị mật khẩu</p></span> 
+                    </div>
+                    <div class="btn-login">
+                        <button>Đăng nhập</button>
+                    </div>
+                </form>
+                <div class="for">
+                    <a href="/fogotpass">Quên mật khẩu?</a> hoặc <a href="/Register">Đăng ký</a> 
+                </div>
+                <div class="for">
+                  <a href="/loginAdmin">Đăng nhập trang quản Trị</a>
+              </div>
+                
+              <div class="showmessage"  style="color: red;"><h2><%= message %></h2></div>    
+          </div>
+    
+
+    </body>
+</html>

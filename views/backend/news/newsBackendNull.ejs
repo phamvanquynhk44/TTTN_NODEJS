@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/backend.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ 
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
+
+<script> 
+</script> 
+</head>
+<body>
+
+  <%- include('../partial/header') %>
+        <h1 style="text-align: center;">Quản Lý Bài Viết</h1> 
+        <div class="functionb">
+          <a href="/newsBackendTrash/<%=token%>" class="notification">
+            <span>Thùng rác</span>
+            <% demsp.forEach(function(demsp){ %>        
+            <span class="badge"><%= demsp.demsp%></span>
+            <% }) %>
+          </a>
+        </div>
+        
+      </div>
+
+      <div class="container">
+        <h3 style="text-align: center;color:red;">KHÔNG CÓ GÌ TRONG QUẢN LÝ BÀI VIẾT</h3>
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+              <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tên danh mục</th>
+                    <th>Ảnh</th>
+                    <th>Parent</th>
+                    <th>Chức năng</th>
+                  </tr>
+              </thead>
+              <tbody>
+              </tbody>
+          </table>
+      </div>
+
+  </div>  
+</body>
+<script src="/js/backendP.js"></script>
+</html> 

@@ -1,0 +1,23 @@
+<div class="main">
+    <div class="topnav" id="myTopnav">
+        <a href="/Admin/<%= token %>" class="active">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+      
+      <div style="padding-left:16px">
+        <div id="mySidenav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <a href="/catalog/<%= token %>">Quản Lý Danh Mục</a>
+          <a href="/product/<%= token %>">Quản Lý Sản Phẩm</a>
+          <a href="/order/<%= token %>">Quản Lý Đơn Hàng</a>
+          <a href="/accountBackend/<%= token %>">Quản Lý Tài Khoản</a>
+          <a href="/contactBackend/<%= token %>">Quản Lý Liên Lạc</a>
+          <a href="/newsBackend/<%= token %>">Quản Lý Bài Viết</a>
+          <a href="/chart/<%= token %>">Thống kê</a>
+        </div>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="menuP">&#9776; Danh mục</span>

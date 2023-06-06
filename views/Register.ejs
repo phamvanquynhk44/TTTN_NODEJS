@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <title> lam trang gearvn</title>
+  <meta charset="utf-8">
+  <%- include('partial/linkData') %>
+  <style>
+    
+    /* Style the submit button */
+    input[type=submit] {
+      background-color: #04AA6D;
+      color: white;
+    }
+    
+    /* Style the container for inputs */
+    .container {
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+    
+    /* The message box is shown when the user clicks on the password field */
+    #message {
+      display:none;
+      background: #f1f1f1;
+      color: #000;
+      position: relative;
+      padding: 20px;
+      margin-top: 10px;
+    }
+    
+    #message p {
+      padding: 10px 35px;
+      font-size: 18px;
+    }
+    
+    /* Add a green text color and a checkmark when the requirements are right */
+    .valid {
+      color: green;
+    }
+    
+    .valid:before {
+      position: relative;
+      left: -35px;
+      content: "✔";
+    }
+    
+    /* Add a red text color and an "x" when the requirements are wrong */
+    .invalid {
+      color: red;
+    }
+    
+    .invalid:before {
+      position: relative;
+      left: -35px;
+      content: "✖";
+    }
+    </style>
+<body>
+  <% contentHeader.forEach(function(contentHeaderItem){ %>
+    <%- include(contentHeaderItem.view, contentHeaderItem.data) %>
+  <% }) %>
+
+
+<!-- Tạo tài khoản -->
+          <div id="login">
+            <h1>Tạo tài khoản</h1>
+                <form action="/doRegister" method="post">
+                    <div class="f-e">
+                      <span><i class="fa fa-user"></i></i></span>
+                      <input type="text" id="surname" name="surname" placeholder="Họ" required><br>
+                  </div>
+                    <div class="f-e">
+                        <span><i class="fa fa-user"></i></span>
+                        <input type="text" name="name" placeholder="Tên" required>
+                    </div>
+                    <div class="f-e">
+                        <span><i class="fa fa-envelope"></i></span>
+                        <input type="email" id="email" name="email" placeholder="Email" required><br>
+                        <span id="email_error"></span>
+                    </div>
+                    <div class="f-e">
+                        <span><i class="fa fa-phone"></i></span>
+                        <input type="number" min="0" max="9999999999" id="phone" name="phone" placeholder="phone" required><br>
+                        <span id="phone_error" style="color: red;"></span>
+                    </div>
+                    <div class="f-pass">
+                        <span><i class="fa fa-lock"></i></span>
+                        <input type="password" id="psw" name="psw" placeholder="Mật khẩu" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Phải chứa ít nhất một số và một chữ hoa và chữ thường và ít nhất 8 ký tự trở lên" required><br>                                                              
+                        <span id="password_error" ></span>   
+                        <span><input type="checkbox" class="showpass" onclick="myFunction()"><p>Hiển thị mật khẩu</p></span>  
+                        <div id="message">
+                          <h3>Mật khẩu phải có nội dung sau:</h3>
+                          <p id="letter" class="invalid">Một <b> Chữ thường</b></p>
+                          <p id="capital" class="invalid">Một <b> Chữ hoa</b></p>
+                          <p id="number" class="invalid">Một <b> Số</b></p>
+                          <p id="length" class="invalid">Tối thiểu <b> 8 Ký tự</b></p>
+                        </div>                     
+                    </div>
+                    <div class="btn-r">
+                        <button onclick="return validate();" id="btn">Đăng ký</button>
+                    </div>
+                </form> 
+               <div  style="color: red;"><h2><%= message %></h2></div>  
+
+               
+          </div>  
+          <script>
+            var myInput = document.getElementById("psw");
+            var letter = document.getElementById("letter");
+            var capital = document.getElementById("capital");
+            var number = document.getElementById("number");
+            var length = document.getElementById("length");
+            
+            // When the user clicks on the password field, show the message box
+            myInput.onfocus = function() {
+              document.getElementById("message").style.display = "block";
+            }
+            
+            // When the user clicks outside of the password field, hide the message box
+            myInput.onblur = function() {
+              document.getElementById("message").style.display = "none";
+            }
+            
+            // When the user starts to type something inside the password field
+            myInput.onkeyup = function() {
+              // Validate lowercase letters
+              var lowerCaseLetters = /[a-z]/g;
+              if(myInput.value.match(lowerCaseLetters)) {  
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
+              } else {
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
+              }
+              
+              // Validate capital letters
+              var upperCaseLetters = /[A-Z]/g;
+              if(myInput.value.match(upperCaseLetters)) {  
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+              } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
+              }
+            
+              // Validate numbers
+              var numbers = /[0-9]/g;
+              if(myInput.value.match(numbers)) {  
+                number.classList.remove("invalid");
+                number.classList.add("valid");
+              } else {
+                number.classList.remove("valid");
+                number.classList.add("invalid");
+              }
+              
+              // Validate length
+              if(myInput.value.length >= 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+              } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
+              }
+            }
+            </script>       
+
+          <%- include('partial/footer') %>
+    </body>
+    <script src="/js/DK.js"></script>
+    <script src="/js/DN.js"></script>
+    <script src="/js/menu.js"></script>
+</html>

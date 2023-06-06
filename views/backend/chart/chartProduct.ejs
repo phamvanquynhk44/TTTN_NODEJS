@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/backend.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ 
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://unpkg.com/currency.js@~2.0.0/dist/currency.min.js"></script>
+
+
+<style>
+  .alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+  }
+  
+  .alert.success {background-color: #04AA6D;}
+  .alert.info {background-color: #2196F3;}
+  .alert.warning {background-color: #ff9800;}
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
+  .canvas{
+    width: 100%;
+  }
+  .table-striped td a{
+    text-decoration: none;
+    color: rgb(44, 41, 41);
+  }
+  .table-striped td:hover{
+    background-color: crimson;
+    color: white;
+  }
+  .table-striped td a:hover{
+    color: white;
+  }
+  </style>
+</head>
+<body>
+
+  <%- include('../partial/header') %>
+        <h1 style="text-align: center;">THỐNG KÊ/DOANH SỐ THEO SẢN PHẨM</h1> 
+        <div class="functionb">
+          <a href="/chart/<%= token %>"><button class="btnb infob">Quay về</button></a> 
+          <% i=0; today.forEach(function(today){ %>
+            <a href="/chartProductToday/<%= token %>/<%= today.today %>"><button class="btnb dangerb">DOANH SỐ SẢN PHẨM HÔM NAY</button></a>  
+            <% i++; }) %>   
+        </div>
+
+    <div class="container"> 
+      <div class="canvas">
+        <br>
+        <canvas id="canvas"></canvas>
+      </div>
+      </div>
+
+
+
+      <script>
+var xmlhttp = new XMLHttpRequest();
+var url = "http://localhost:3000/All";
+xmlhttp.open("GET",url,true);
+xmlhttp.send();
+xmlhttp.onreadystatechange = function(){
+    if(this.readyState == 4 && this.status == 200){
+        var data = JSON.parse(this.responseText);
+        //console.log(data)
+        date = data.date_population.map(function(elem){
+            return elem.date;
+        })
+        population = data.date_population.map(function(elem){
+            return elem.population;
+        })
+        //console.log(population)
+
+        const ctx = document.getElementById('canvas').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: date,
+                datasets: [
+                  {
+                    label: 'Tổng Doanh Thu',
+                    data: population,
+                    backgroundColor: "#ff335e"
+                    
+                }
+              ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+}
+
+//This is JsonData.json
+//{"date_population": [
+// 		{
+// 		  "date": "1941",
+// 		  "population": 406760
+// 		},{
+// 		  "date": "1951",
+// 		  "population": 778977
+// 		},{
+// 		  "date": "1961",
+// 		  "population": 1207000
+// 		}
+// 	]
+// }
+
+
+      </script>
+
+  </div>  
+</body>
+<script src="/js/backendP.js"></script>
+<script>
+            
+  var table = document.getElementById("table"), sumVal = 0;
+  
+  for(var i = 1; i < table.rows.length; i++)
+  {
+      sumVal = sumVal + parseInt(table.rows[i].cells[0].innerHTML);
+  }
+  const VND = new Intl.NumberFormat('vi-VN', {
+  style: 'currency',
+  currency: 'VND',
+});
+  
+  document.getElementById("val").innerHTML = "" + VND.format(sumVal);
+  console.log(sumVal);
+</script>
+</html> 

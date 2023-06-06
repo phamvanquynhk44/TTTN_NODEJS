@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/backend.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ 
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://unpkg.com/currency.js@~2.0.0/dist/currency.min.js"></script>
+
+
+<style>
+  .alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+  }
+  
+  .alert.success {background-color: #04AA6D;}
+  .alert.info {background-color: #2196F3;}
+  .alert.warning {background-color: #ff9800;}
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
+  .canvas{
+    float: right; 
+  }
+  #canvas{
+    width: 950px;
+  }
+  .table-striped td a{
+    text-decoration: none;
+    color: rgb(44, 41, 41);
+  }
+  .table-striped td:hover{
+    background-color: crimson;
+    color: white;
+  }
+  .table-striped td a:hover{
+    color: white;
+  }
+  </style>
+</head>
+<body>
+
+  <%- include('../partial/header') %>
+        <h1 style="text-align: center;">THỐNG KÊ/DOANH THU THEO THỜI GIAN</h1> 
+        <div class="functionb">
+          <% i=0; today.forEach(function(today){ %>
+          <a href="/chart/<%= token %>"><button class="btnb infob">Quay về</button></a>
+          <% i++; }) %>   
+        </div>
+
+        <h2>DOANH THU NGÀY/THÁNG/NĂM</h2>
+        <form action="/doChartToday" method="post">
+          <input type="hidden" name="token" value="<%= token %>">
+          <% i=0; min.forEach(function(min){ %>
+            <% i=0; max.forEach(function(max){ %>
+            <input type="date" id="start" name="date" value="<%= date %>"  min="<%= min.NN %>" max="<%= max.LN %>" required>   
+            <input type="submit" value="Xác nhận">
+            <% i++; }) %> 
+            <% i++; }) %> 
+        </form>
+
+
+      <table  class=" table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+            </tr>
+        </thead>
+        <tbody>       
+        </tbody>
+        <td colspan="1"><h2 style="color: crimson;">Tổng tiền</h2></td><td><span id="val">0 đ</span></td>          
+    </table>
+    <table id="table" border="1" style="display: none;">
+      <tr>
+          <th>Value</th>
+      </tr>
+  </table>
+      </div>
+  </div>  
+</body>
+<script src="/js/backendP.js"></script>
+<script>
+            
+  var table = document.getElementById("table"), sumVal = 0;
+  
+  for(var i = 1; i < table.rows.length; i++)
+  {
+      sumVal = sumVal + parseInt(table.rows[i].cells[0].innerHTML);
+  }
+  const VND = new Intl.NumberFormat('vi-VN', {
+  style: 'currency',
+  currency: 'VND',
+});
+  
+  document.getElementById("val").innerHTML = "" + VND.format(sumVal);
+  console.log(sumVal);
+</script>
+</html> 

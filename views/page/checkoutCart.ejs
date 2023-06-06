@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      
+    </head>
+
+    <body>
+      <h1>Thanh toán</h1>
+      <div class="functionb">
+        <a href="/showCart"><button class="btnb infob">Quay về giỏ hàng</button></a>
+        </a>
+      </div>
+      <div id="login">            
+          <form action="/saveCart" method="post">
+            <div class="f-e">
+              <span><span><i class="fa fa-user"></i></i></span></span>
+              <input type="text" id="name" name="name" value="<%= name %>" placeholder="Tên khách hàng" required>
+              <input type="hidden" id="token" name="token" value="<%= token %>">
+          </div>
+          <div class="f-e">
+            <span><i class="fa fa-envelope"></i></span>
+            <input type="email" id="email" name="email" value="<%= email %>" placeholder="Email" required>
+        </div>
+        <div class="f-e">
+          <span><i class="fa fa-phone"></i></span>
+          <input type="number" id="phone" name="phone" value="<%= phone %>" placeholder="Số điện thoại" required>
+      </div>
+        <div class="f-e">
+          <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+          <input type="text" id="address" name="address" value="<%= address %>" placeholder="Địa chỉ" required>
+      </div>
+      <div class="f-e">
+        <select name="" id="">
+          <option value="">Chọn Tỉnh / thành</option>
+        </select>
+        <select name="" id="">
+          <option value="">Chọn Quận / huyện</option>
+        </select>
+        <select name="" id="">
+          <option value="">Chọn Phường / xã</option>
+        </select>
+    </div>
+        <div class="f-e">
+          <select name="payment" id="payment">
+            <option value="1">COD (Thanh toán khi nhận hàng)</option>
+          </select>
+      </div>
+            <div class="btn-login">
+                <button>Gửi</button>
+            </div>
+        </form>	               																													
+        
+
+            
+            <div class="showmessage"  style="color: red;"><h2></h2></div>  
+            
+            <h1>Đơn hàng của bạn</h1>
+
+            <table id="customers">
+              <tr>
+                <th>STT</th>
+                <th>Tên sản phẩm</th>
+                <th>Ảnh</th>
+                <th>Đơn giá</th>
+                <th>Số lượng</th>         
+                <th>Thành tiền</th>   
+              </tr>
+              <% 
+              i=0;
+              sum=0;
+              cart.forEach(function(c){
+                c.forEach(function(a){   
+                %>
+                <tr>
+                      <td><%= i+1 %></td>
+                      <td><%= a.product_name %></td>
+                      <td>
+                        <img src="/img/product/<%= a.image %>" style="width: 100px;">  
+                      </td>
+                      <td><%= a.price %> vnđ</td>
+                      <td><input type="number" min="1" max="100000000" value="<%= amount[i] %>">id=<%= a.id %></td>
+                      <td><%= a.price*amount[i] %> vnđ</td>
+                </tr>
+                  <% 
+                  sum+=a.price*amount[i];
+                })
+                i++; 
+              }) 
+                %>
+                  <td colspan="5"><h2 style="color: crimson;">Tổng cộng</h2></td><td><%= sum %> vnđ</td>
+            </table>  
+      </div> 
+    </body>
+</html>

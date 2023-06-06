@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<link rel="stylesheet" href="/css/backend.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ 
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
+<style>
+  .aOrder a{
+    text-decoration: none;
+  }
+  .aOrder a:hover{
+    color: crimson;
+  }
+</style>
+      
+    </head>
+
+    <body>
+    </div>  
+    <br>
+    <h1 style="text-align: center;color: crimson;">Tài khoản của bạn</h1>
+    <div class="functionb">
+      <a href="/"><button class="btnb infob">Về trang chủ</button></a>
+    </div>   
+    <div class="container">
+    <table  class="table table-striped table-bordered" style="width:100%">
+      <thead>
+          <tr>
+            <th>Tên trường</th>
+            <th>Giá trị</th>   
+          </tr>
+      </thead>
+      <tbody>
+        <% showUser.forEach(function(item){ %>
+          <tr>                    
+              <td>Họ và tên</td> 
+              <td><%= item.surname %> <%= item.name %></td> 
+            </tr> 
+            <tr>
+              <td>Email</td>
+              <td><%= item.email %></td>
+          </tr> 
+          <tr>
+            <td>Số điện thoại</td>
+            <td><%= item.phone  %></td>
+          <tr>
+            <td>Địa chỉ</td>
+            <td>
+              <% if(item.address==null) {%>
+                Bạn chưa thêm địa chỉ hãy vào Xem địa chỉ bên dưới để thêm 
+             <% } %>
+             <%= item.address %>
+            </td>
+          </tr>
+            <% }) %>      
+      </tbody>
+  </table>
+  <a href="#"><button class="btnb dangerb">Sửa tài khoản</button></a>
+  <a href="/showAdress/<%= email %>/<%= token %>"><button class="btnb dangerb">Thêm địa chỉ</button></a> 
+  </div>
+    <br>  
+      <h1 style="text-align: center;color: crimson;">Đơn hàng của bạn</h1> 
+    <div class="container">
+      <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                  <th>Thứ tự</th>
+                  <th>Mã đơn hàng</th>
+                  <th>Ngày đặt</th>
+                  <th>Thanh toán bằng</th>
+                  <th>Tình trạng thanh toán</th>
+                  <th>Tình trạng đơn hàng</th>
+                </tr>
+            </thead>
+            <tbody>
+              <% i=0; showOrder.forEach(function(item1){ %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td class="aOrder">
+                      <a href="/showOrder/<%= email %>/<%= token %>/<%= item1.order_code %>/<%= item1.id %>"><%= item1.order_code %></a>                     
+                    </td>
+                    <td><%= item1.order_date %></td>
+                    <td>
+                      <% if(item1.payment==1) {%>
+                        COD
+                    <% } %>
+                    </td>
+                    <td>
+                      <% if(item1.payment==1) {%>
+                        Chưa thanh toán
+                    <% } %>
+                    <% if(item1.payment!=1) {%>
+                      Đã thanh toán
+                  <% } %>
+                    </td>
+                    <td>
+                      <% if(item1.status==1) {%>
+                        Mới 
+                    <% } %>
+                    <% if(item1.status==2) {%>
+                      Đang giao
+                  <% } %>
+                  <% if(item1.status==3) {%>
+                    Đã giao 
+                <% } %>
+                    </td>      
+                  </tr>       
+                <% i++; }) %>
+            </tbody>
+        </table>
+    </div>
+
+
+    </body>
+    <script src="/js/backendP.js"></script>
+</html>

@@ -1,0 +1,230 @@
+#home-page1{
+  display: none;
+  width: 20%;
+  margin-top: 7px;
+}
+#menu-h{
+  display: none;
+  width: 10%;
+}
+
+.cart-home{
+  display: none;
+  font-size: 32px;
+  margin: 0px 3px;
+  margin-left: 14px;
+}
+
+@media only screen and (max-width: 310px) {
+  div.dropdown-content {
+   left: 0;
+ }
+}
+
+
+@media only screen and (max-width: 768px) {
+     #function, .text-f, .navbar {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    #function, .text-f, .navbar {
+     display: none;
+   }
+ }
+
+
+  @media only screen and (max-width: 768px) {
+    .contentLaptop{
+      margin: 0  0;  
+  }
+  }
+
+  @media only screen and (max-width: 768px) {
+    #home-page1, #menu-h, .cart-home  {
+     display: block;
+    }
+  }
+
+
+  @media only screen and (max-width: 768px) {
+    #search {
+        width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .content { 
+        margin: 0px -10px;
+    }
+  }
+
+  
+  @media only screen and (max-width: 768px) {
+    .content {
+        width: 105%;
+    }
+  }
+
+    
+  @media only screen and (max-width: 768px) {
+    .f-email {
+       padding: 0px 38px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .banner-c img {
+       width: 100%;
+       height: 200px;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .info-detail {
+      width: 100%;
+      margin: 0 0px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    #login input {
+      width: 80%;
+  }
+  }
+
+  @media only screen and (max-width: 768px) {
+    body {
+     margin: 0 0;
+  }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .product-info{
+    margin-right: 10px;
+  }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .product-top{
+      width: 160px;
+    height: 100%;
+  }
+  }
+
+
+  @media only screen and (max-width: 768px) {
+    ul.product {
+      padding: 0px;
+      margin: 13px -4px;
+  }
+  }
+  @media only screen and (max-width: 768px) {
+    .product-price {
+      margin-top: 30px;
+  }
+  }
+
+
+  
+  @media only screen and (max-width: 820px) {
+    #function, .text-f, .navbar {
+     display: none;
+   }
+ }
+
+
+ @media only screen and (max-width: 820px) {
+   #home-page {
+    display: none;
+   }
+ }
+
+ @media only screen and (max-width: 820px) {
+   #home-page1, #menu-h, .cart-home  {
+    display: block;
+   }
+ }
+
+
+ @media only screen and (max-width: 820px) {
+   #search {
+       width: 100%;
+   }
+ }
+
+ @media only screen and (max-width: 820px) {
+   .content {
+     
+       margin: 0px -10px;
+   }
+ }
+
+ 
+ @media only screen and (max-width: 820px) {
+   .content {
+       width: 105%;
+   }
+ }
+
+   
+ @media only screen and (max-width: 820px) {
+   .f-email {
+      padding: 0px 3px;
+   }
+ }
+
+ @media only screen and (max-width: 820px) {
+   .banner-c img {
+      width: 100%;
+      height: 200px;
+   }
+ }
+
+ @media only screen and (max-width: 820px) {
+   #slideshow-g {
+    display: inline;   
+   }
+ }
+ @media only screen and (max-width: 820px) {
+  .containerd {
+    position: relative;
+    width: 100%;
+}
+}
+@media only screen and (max-width: 820px) {
+  .containerd img{
+    height: 362px;
+}
+}
+ @media only screen and (max-width: 820px) {
+   .info-detail {
+     width: 100%;
+     margin: 0 0px;
+   }
+ }
+
+ @media only screen and (max-width: 820px) {
+   #login input {
+     width: 80%;
+ }
+ }
+
+ @media only screen and (max-width: 820px) {
+   body {
+    margin: 0 0;
+ }
+ }
+
+
+ @media only screen and (max-width: 820px) {
+  #myBtn {
+   margin-right: 11px;
+}
+}
+
+
+
+
+
+

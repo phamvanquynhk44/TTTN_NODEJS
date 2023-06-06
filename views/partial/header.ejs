@@ -1,0 +1,114 @@
+        <!-- header -->
+        <header>
+            <div class="headerxxx">
+                 <div id="menu-h">
+                  <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                    <% if(typeof name === 'undefined'){ %>               
+                      <a href="/register">Đăng ký</a>
+                      <a href="/Login">Đăng nhập</a>					
+                    <% 
+                    }else{ %>
+                      <a href="/account/<%= email %>/<%= idAuthority %>" style="text-align: justify;"><%= surname %> <%= name %></a>	      
+                      <a href="/favorite/<%= idAuthority %>">Theo dõi </a>
+                      <a href="/logout" style="color: crimson;">Đăng xuất</a>	               																													
+                    <%
+                    }
+                    %>
+
+                    <button class="dropdown-btn">Danh mục
+                      <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-container">
+                      <% menu.forEach(function(Item){ %>
+                        <% if(Item.parent == 0) { %>
+                        <button class="dropdown-btn"><%= Item.menu_name %>
+                          <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-container">
+                          <% menu.forEach(function(Item1){ %>
+                            <% if(Item1.parent == Item.id) { %>	
+                          <div class="column">
+                            <h3><a href="/collections/<%= Item1.id %>/1"><%= Item1.menu_name %></a></h3>
+                            <% menu.forEach(function(Item2){ %>
+                              <% if(Item2.parent == Item1.id) { %> 
+                            <a href="/detail/<%= Item2.id %>"><%= Item2.menu_name %></a>
+                            <% } %>
+                            <% }) %>
+                          </div>  
+                          <% } %>
+                          <% }) %>
+
+                        </div>
+                        <% } %>
+                        <% }) %> 
+                    </div>  
+                    <% menu1.forEach(function(item1){ %>
+                      <a href="/<%= item1.link %>"><%= item1.name %></a>
+                    <% }) %>        
+                    </a>
+                  </div>
+                  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+               </div>
+    
+                 <div id="home-page1">
+                  <a href="/"><img src="/img/logo/logo-icon-01.png"></a>
+               </div>
+    
+               <div id="home-page">
+                <a href="/"><img src="/img/logo/logo.svg" title="GEARVN PC HIGH-END &amp; GAMING GEAR" alt="ẢNH TRANG CHỦ"></a>
+             </div>
+
+             
+             
+                <form action="/doSearch" method="post"> 
+                  <div id="search">
+                  <input type="search" name="search" placeholder="Nhập tên sản phẩm"  required>
+                  <button><a href="#"><i class="fa fa-search"></i></a></button>  
+                  </div>
+                </form>          
+           
+          
+
+            <div id="function">                                 
+              <% if(typeof name === 'undefined'){ %>               
+                <a href="/Login"><img src="/img/logo/dn.webp" >Đăng nhập</a>	
+                <a href="/register"><img src="/img/logo/dk.webp">Đăng ký</a>						
+              <% 
+              }else{ %>
+                <a href="/account/<%= email %>/<%= idAuthority %>" style="text-align: justify;"><img src="/img/logo/TK.webp" ><%= surname %> <%= name %></a>	
+                <a href="/showCart" class="notification"><img src="/img/logo/gh.webp">
+                  <span>Giỏ hàng</span>
+                  <% if(typeof numberOfItem === 'undefined'){ %>		                 			
+                  <% 
+                  }else{ %>
+                    <span class="badge"><%= numberOfItem %></span> 	                              																													
+                  <%
+                  }
+                  %>
+ 
+                <a href="/favorite/<%= idAuthority %>"><img src="/img/logo/favorite.svg" >Theo dõi </a>
+                <a href="/logout"><img src="/img/logo/DX.webp" >Đăng xuất</a>	               																													
+              <%
+              }
+              %>
+          </div>
+
+          <div class="cart-home">
+            <% if(typeof numberOfItem === 'undefined'){ %>	
+              <a href="/Login"><i class="fa fa-shopping-cart fa-flip-horizontal"></i></a>       	               			
+              <%              
+              }else{ %>
+                <a href="/showCart"><i class="fa fa-shopping-cart fa-flip-horizontal"></i><%= numberOfItem %></a>
+                	                              																													
+              <%
+              }
+              %>  
+          </div>
+                   
+                </div>
+    
+              </header>
+
+

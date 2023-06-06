@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partial/linkData') %>
+  </head>
+<body>
+  <% contentHeader.forEach(function(contentHeaderItem){ %>
+    <%- include(contentHeaderItem.view, contentHeaderItem.data) %>
+  <% }) %>
+      
+
+  <% contentMenu.forEach(function(contentMenuItem){ %>
+    <%- include(contentMenuItem.view, contentMenuItem.data) %>
+  <% }) %>
+
+<!-- Slideshow Gallery -->
+<% getProductDetails.forEach(function(getProductDetails){ %>
+<div id="slideshow-g">
+<div class="containerd">
+  <div class="mySlidesd">
+    <div class="numbertextd"></div>
+    <img src="/img/product/<%= getProductDetails.image%>" style="width:100%">
+  </div>
+
+  <% getProductDetailsImg.forEach(function(getProductDetailsImg){ %>
+  <div class="mySlidesd">
+    <div class="numbertextd"></div>
+    <img src="/img/product/<%= getProductDetailsImg.img_detail%>" style="width:100%">
+  </div>
+  <% }) %> 
+
+    
+    
+  <a class="prevd" onclick="plusSlides(-1)">❮</a>
+  <a class="nextd" onclick="plusSlides(1)">❯</a>
+</div>
+
+<div class="info-detail">
+  <h1><%= getProductDetails.product_name%></h1>
+  🎁Nhận ngay bộ sticker dán GEARVN🎁 (số lượng có hạn)
+  <div class="promotion-d">
+   <h3>⭐ KHUYẾN MÃI ĐẶC BIỆT ⭐(số lượng có hạn)</h3>
+   <p>+ Nhận ngay tản nhiệt Corsair H100i ELITE CAPELLIX WHITE trị giá 4,190,000đ.</p>
+   <p>  + Mua thêm RAM giảm ngay 500,000đ (xem chi tiết).</p>
+   <p>(Lưu ý: Không hỗ trợ trừ KM vào giá bán bộ PC, không thay đổi linh kiện bộ PC để giữ CTKM)</p>
+       
+  <h3>🎁ƯU ĐÃI SIÊU SỐC🎁 (số lượng có hạn).</h3>
+  <p> + Giảm giá 30% sản phẩm đèn thông minh Nanoleaf khi mua kèm PC.</p>
+   
+  <h3>ƯU ĐÃI KHI MUA KÈM PC TẠI GEARVN</h3>
+  <p>⭐ Giảm ngay 100,000đ khi mua thêm màn hình máy tính.</p>
+  <p>⭐ Giảm ngay 150,000đ khi mua thêm ghế.</p>
+  <p>⭐ Giảm ngay 50,000đ mỗi loại khi mua thêm chuột, phím, tai nghe.</p>
+  <p>Và còn rất nhiều ưu đãi khác. XEM NGAY CHI TIẾT TẠI ĐÂY</p>
+
+  </div>
+  <div class="order-d">
+    <p> Hỗ trợ trả góp MPOS (Thẻ tín dụng), HDSAISON.</p>
+    <p> (Hình ảnh PC chỉ mang tính chất minh họa).</p>
+    
+    <p> Giá :<span id="val" style="font-size: 22px;
+      color: #e61010;
+      font-weight: 700;"></span>
+      </p>
+      <input type="hidden" id="table" value="<%= getProductDetails.price%>">
+      <script>
+      var table = document.getElementById("table").value;
+
+      const VND = new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND',
+    }); 
+      document.getElementById("val").innerHTML = "" + VND.format(table);
+      console.log(sumVal);
+    </script>
+
+    <% if(typeof name === 'undefined'){ %>	
+      <a href="/Login"><button> Đặt hàng</button></a>	                 			
+      <% 
+      }else{ %>
+        <a href="/addToCart/<%=getProductDetails.id%>"><button  class="favorite1"> Đặt hàng</button></a>	                              																													
+      <%
+      }
+      %>
+
+      <% if(typeof name === 'undefined'){ %>		 
+        <a href="/Login">
+          <button class="favorite"><i class="fa fa-heart"></i> <span>Theo dõi</span></button>
+        </a>                   			
+        <% 
+        }else{ %>  
+              <a href="/addFavorite/<%= idAuthority %>/<%= getProductDetails.id%>/1">
+                <button  style="background-color: green;border-color: green;" class="favorite"><i class="fa fa-heart"></i> <span>Theo dõi</span></button>
+              </a>  
+        <%
+        }
+        %>
+    
+   
+  </div>
+</div>
+
+</div>
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, '1')">Mô tả sản phẩm</button>
+  <button class="tablinks" onclick="openCity(event, '2')">Bình luận</button>
+</div>
+
+<div id="1" class="tabcontent">
+  <%= getProductDetails.product_detail%>
+</div>
+
+<div id="2" class="tabcontent">
+  <div class="fb-comments" data-href="https://gearvn.com/" data-width="" data-numposts="5"></div>
+</div>
+<% }) %> 
+
+    
+<%- include('partial/footer') %>
+
+
+</body>
+<script src="/js/detail.js"></script>
+<script>
+  var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+    dropdownContent.style.display = "none";
+  } else {
+    dropdownContent.style.display = "block";
+  }
+});
+}
+</script>
+<script src="/js/backToTop.js"></script>
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v16.0" nonce="sjuE7KHv"></script>
+</html>

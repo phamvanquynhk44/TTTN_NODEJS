@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <style>
+      </style>
+    </head>
+
+    <body>
+
+      <h1>Giỏ hàng</h1>
+      <div class="functionb">
+        <a href="/"><button class="btnb infob">Quay về</button></a>
+        </a>
+      </div>
+
+      <table id="customers">
+        <tr>
+          <th>STT</th>
+          <th>Tên sản phẩm</th>
+          <th>Ảnh</th>
+          <th>Đơn giá</th>
+          <th>Số lượng</th>  
+          <th>Xoá</th>        
+          <th>Thành tiền</th>   
+
+        </tr>
+        <% 
+        i=0;
+        sum=0;
+        cart.forEach(function(c){
+          c.forEach(function(a){   
+          %>
+          <tr>
+                <td><%= i+1 %></td>
+                <td><%= a.product_name %></td>
+                <td>
+                  <img src="/img/product/<%= a.image %>" style="width: 100px;">  
+                </td>
+                <td><%= a.price %> vnđ</td>
+                <td>
+                  <form action="/updateCart" method="post">
+                  <input type="number" min="1" name="qty" value="<%= amount[i] %>"> 
+                  <input type="hidden" name="id" value="<%= i %>"> 
+                  <button class="btnb infob">Cập nhật</button>
+                </form>
+                </td>
+                <td><a href="/delCart/<%= i %>"><button class="btnb dangerb">Xoá</button></a></td>
+                <td><%= a.price*amount[i] %> vnđ</td>
+              
+          </tr>
+            <% 
+            sum+=a.price*amount[i];
+          })
+          i++; 
+        }) 
+          %>
+            <td colspan="6  "><h2 style="color: crimson;">Tổng cộng</h2></td><td><%= sum %> vnđ</td>
+            <tr>
+              <% if(numberOfItem===0){ %>	     			
+                <% 
+                }else{ %>   
+                  <td colspan="4"><a href="doKeyShowCart"><button class="btnb infob">Thanh toán</button></a></td>                             																													              
+                  <td colspan="3">
+                    <a href="/delAllCart"><button class="btnb dangerb">Xoá tất cả</button></a>
+                  </td>             																													
+                <%
+                }
+                %>
+
+            </tr>
+      </table>        
+    </body>
+</html>

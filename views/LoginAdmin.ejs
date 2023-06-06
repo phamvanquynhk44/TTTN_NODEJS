@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <%- include('partial/linkData') %>
+      <style>
+        .loginadmin img{
+            margin-top: 20px;
+            width: 100%;
+            height: 150px;
+        }
+
+      </style>
+    </head>
+
+    <body>      
+            <div class="loginadmin">
+                <a href="/"><img src="/img/logo/logo.svg" title="GEARVN PC HIGH-END &amp; GAMING GEAR" alt="ẢNH TRANG CHỦ"></a>
+             </div>
+
+
+<!-- ĐĂNG NHẬP -->
+          <div id="login">
+            <h1>Đăng nhập Trang Quản Trị</h1>
+            <form action="/doLoginAdmin" method="post">
+                    <div class="f-e">
+                        <span><i class="fa fa-envelope"></i></span>
+                        <input type="text" id="emailOrPhone" name="emailOrPhone" placeholder="Email hoặc số điện thoại" required>
+                    </div>
+                    <div class="f-pass">
+                        <span><i class="fa fa-lock"></i></span>
+                        <input type="password" id="psw" name="pass" placeholder="Mật khẩu" required><br>
+                        <span><input type="checkbox" class="showpass" onclick="myFunction()"><p>Hiển thị mật khẩu</p></span> 
+                    </div>
+                    <div class="btn-login">
+                        <button>Đăng nhập</button>
+                    </div>
+                </form>
+                <div  style="color: red;"><h2><%= message %></h2></div>     
+          </div>
+
+          <%- include('partial/footer') %>
+    </body>
+    <script src="./js/DN.js"></script>
+    <script src="./js/menu.js"></script>
+</html>

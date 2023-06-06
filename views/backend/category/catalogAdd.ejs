@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/backend.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
+
+<script> 
+</script> 
+</head>
+<body>
+
+    <%- include('../partial/header') %>
+        <h1 style="text-align: center;">THÊM DANH MỤC</h1>
+        <div class="functionb">
+            <a href="/catalog/<%=token%>"><button class="btnb infob">Quay về</button></a>
+          </div> 
+
+
+        
+<div class="span9">
+    <div class="content">
+
+
+        <div class="module">
+            <div class="module-body">
+                <form action="/doCatalogAdd" method="post" class="form-horizontal row-fluid" enctype="multipart/form-data">
+
+                    <div class="mb-3">
+                        <label class="control-label" for="basicinput">Tên danh mục</label>
+                        <div class="controls">
+                            <input type="text" id="basicinput" name="name" placeholder="Tên danh mục" class="span8" required>
+                            <input type="hidden" id="basicinput" name="token" placeholder="Tên danh mục" class="span8" value="<%=token%>" required>
+                        </div>
+                    </div>
+                    
+                
+                    <div class="mb-3">
+                        <label class="control-label" for="basicinput">Parent</label>
+                        <div class="controls">
+                            <select class="span8"  name="parent">
+                                <option value="0">Danh mục chính</option>                            
+                                        <% allCat.forEach(function(Item){ %>  
+                                            <% if(Item.parent == 0 ) {%>
+                                                <option value="<%= Item.id %>" class="form-control"><%= Item.menu_name %></option> 
+                                            <% } %>                                                                  
+                                            <% }) %>                                                  
+                          
+                            </select>
+                
+                        </div>
+                    </div>          
+                    <div class="mb-3">
+                        <label class="control-label" for="basicinput">Tình trạng</label>
+                        <div class="controls">
+                            <select  name="status" class="span8">
+                                <option value="1" class="form-control">Mở</option>
+                                <option value="0" class="form-control">Tắt</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <div class="controls">
+                            <label for="avatar">Chọn ảnh hồ sơ:</label>
+                                <input type="file" id="avatar" name="fimage" accept="image/png, image/jpeg, image/webp, image/gif ,image/jpg" class="form-control" required>      
+                        </div>
+                    </div>
+                
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn btn-default">THÊM</button>
+                        </div>
+                    </div>
+                </form> 
+         
+</div>
+</div>
+        
+      </div>
+
+  </div>  
+</body>
+<script src="/js/backendP.js"></script>
+</html> 

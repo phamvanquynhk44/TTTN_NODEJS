@@ -1,0 +1,53 @@
+
+
+
+             
+<div class="content">
+  <div class="pc">
+    <h2>SẢN PHẨM BẠN ĐANG TÌM VỚI TỪ KHOÁ (<%= key%>)</h2>
+    <a href="#"></a>
+ </div> 
+ <main>
+    <ul class="product" id="paginated-list" data-current-page="1" aria-live="polite">
+      <% search.forEach(function(item){ %>
+          <li>
+            <div class="product-item">
+              <div class="product-top">
+                <a href="/detail/<%= item.id%>" class="product-thumb">
+                  <img src="/img/product/<%= item.image%>" alt="">
+                </a>
+                <a href="/detail/<%= item.id%>" class="buy-now">Đặt hàng</a>
+                <!--Click để xem chi tiết
+                Đặt hàng -->
+              <div class="product-info">
+                <a href="/detail/<%= item.id%>" class="product-name"><%= item.product_name%></a>
+                <a href="/detail/<%= item.id%>" class="product-price"><%= item.price%>₫</a>
+              </div>
+            </div>
+            </div>
+          </li> 
+          <% }) %>  
+    </ul>  
+ 
+  <nav class="pagination-container">
+    <button class="pagination-button" id="prev-button" aria-label="Previous page" title="Previous page">
+      &lt;
+    </button>
+
+    <div id="pagination-numbers">
+
+    </div>
+
+    <button class="pagination-button" id="next-button" aria-label="Next page" title="Next page">
+      &gt;
+    </button>
+  </nav>
+</main>
+</div>  
+
+
+    </body>
+    <script src="/js/collections.js"></script>
+    <script src="/js/menu.js"></script>
+    <script src="/js/paginationCollections.js"></script>
+</html>

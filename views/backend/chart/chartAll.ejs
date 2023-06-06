@@ -1,0 +1,31 @@
+
+
+{"date_population": [
+<% sumTable.forEach(function(item){ %>
+  {
+    "date": 
+    <% i=0; showTableNullStatus.forEach(function(item1){ %>
+      <% if(item1.id == item.product_id ) {%>
+        "<%= item1.product_name %>",
+      <% } %>
+      <% i++; }) %>
+    "population": 
+    <% i=0; showTableNullStatus.forEach(function(item1){ %>
+      <% if(item1.id == item.product_id ) {%>
+        <%= item1.price*item.sl %>
+      <% } %>
+      <% i++; }) %>
+  },
+  <% }) %>
+  {
+     		  "date": "",
+   		  "population": 0
+  }
+  ] 
+}
+
+
+
+
+
+

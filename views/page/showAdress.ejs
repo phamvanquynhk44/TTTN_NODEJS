@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<link rel="stylesheet" href="/css/backend.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ 
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  .aOrder a{
+    text-decoration: none;
+  }
+  .aOrder a:hover{
+    color: crimson;
+  }
+  
+#login{ 
+    border: 1px solid #f0f0f0;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#login input{
+    text-indent: 15px;
+    font-size: 20px;
+    width: 25%;
+}
+
+h1, .h1 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.f-e, .f-pass{
+    margin-bottom: 20px;
+    width: 100%;
+   display: table;  
+}
+.f-e span i{
+    padding: 6px 12px;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.f-pass span i{
+    padding: 6px 14px;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.btn-login button{
+    padding: 6px 12px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.7;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;  
+}
+.btn-login button:hover{
+    color: white;
+    background-color: black;
+}
+
+.btn-r button{
+    padding: 6px 12px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.7;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;  
+}
+.btn-r button:hover{
+    color: white;
+    background-color: black;
+}
+.for{
+    margin-bottom: 20px;
+}
+.for a:hover{
+    color: red;
+}
+.btnaddress a{
+  margin-left: 100px;
+}
+</style>
+      
+    </head>
+
+    <body>
+    </div>  
+    <br>
+    <h1 style="text-align: center;color: crimson;">ĐỊA CHỈ</h1>
+      <div class="functionb">
+        <button class="btnb dangerb" onclick="addDress()">Nhập địa chỉ mới</button>
+        <a href="/account/<%= email %>/<%= token %>"><button class="btnb infob">Quay về</button></a>
+      </div>   
+
+      <div id="login" style="display: none;">
+            <form action="/doShowAdress" method="post">
+                <div class="f-e">
+                  <span><i class="fa fa-user"></i></i></span>
+                  <input type="text" id="surname" name="surname" placeholder="Họ" required><br>
+                  <input type="hidden" name="token" value="<%= token %>">
+                  <input type="hidden" name="email" value="<%= email %>">
+              </div>
+                <div class="f-e">
+                    <span><i class="fa fa-user"></i></span>
+                    <input type="text" name="name" placeholder="Tên" required>
+                </div>
+                <div class="f-e">
+                  <span><i class="fa fa-home" aria-hidden="true"></i></span>
+                  <input type="text" name="adress" placeholder="Địa chỉ" required>
+              </div>
+                <div class="f-e">
+                  <span><i class="fa fa-home" aria-hidden="true"></i></span>
+                  <input type="text" name="company" placeholder="Công ty">
+              </div>
+                <div class="f-e">
+                    <span><i class="fa fa-phone"></i></span>
+                    <input type="number" min="0" max="9999999999" id="phone" name="phone" placeholder="Số điện thoại" required><br>
+                    <span id="phone_error" style="color: red;"></span>
+                </div>
+                <div class="f-pass">
+                    <span><input type="checkbox" class="showpass" name="default_address" value="1" ><p>Đặt làm địa chỉ mặt định</p></span>                       
+                </div>
+                <div class="btn-r">
+                    <button id="btn">Thêm mới</button>
+                </div>
+            </form> 
+            <div class="btn-r">
+              <button id="btn" onclick="removeDress()">Huỷ</button>
+          </div>         
+          </div>
+
+    <div class="container">
+      <table class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                  <th>Họ tên</th>
+                  <th>Địa chỉ</th>
+                  <th>Công ty</th>
+                  <th>Số điện thoại</th>  
+                  <th>Địa chỉ mặc định</th>
+                </tr>
+            </thead>
+            <tbody> 
+              <% showUserAdress.forEach(function(item){ %> 
+              <tr>
+                <td><%= item.surname %> <%= item.name %></td>
+                <td><%= item.adress %></td>
+                <td><%= item.company %></td>
+                <td><%= item.phone %></td>               
+                <td>
+                  <% if(item.default_address==1) {%>
+                    Phải       
+                <% } %>
+                <% if(item.default_address==0) {%>
+                  Không       
+              <% } %>
+                </td>
+              </tr> 
+              <% }) %>     
+            </tbody>
+        </table>
+    </div>
+
+
+    </body>
+    <script src="/js/backendP.js"></script>
+    <script>
+    function addDress() {
+    var login=  document.getElementById("login");
+    if(login!=null){
+      login.style.display="block";
+    }
+  }
+  function removeDress() {
+    document.getElementById("login").style.display="none";
+  }
+    </script>
+</html>

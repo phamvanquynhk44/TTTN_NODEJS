@@ -1,0 +1,34 @@
+
+
+
+  <div class="navbar">
+    <% menu1.forEach(function(item1){ %>
+      <a href="/<%= item1.link %>"><img src="/img/logo/<%= item1.img %>" alt=""> <%= item1.name %></a>
+    <% }) %> 
+    <div class="dropdown">
+      <button class="dropbtn"><img src="/img/logo/dmsp1.svg" alt=""> Danh mục 
+        <i class="fa fa-caret-down"></i>
+      </button>
+
+      <div class="dropdown-content">  
+        <div class="row">
+          <% menu.forEach(function(Item){ %>
+            <% if(Item.parent == 0) { %>
+          <div class="column">
+            <a href="#"><h3><img src="/img/logo/<%= Item.img_logo_menu %>" alt=""> <%= Item.menu_name %></h3></a>
+            <% menu.forEach(function(Item1){ %>
+              <% if(Item1.parent == Item.id) { %>	
+                <a href="/collections/<%= Item1.id %>/1"> <%= Item1.menu_name %></a>
+            <% } %>
+            <% }) %>
+          </div>
+          <% } %>
+          <% }) %> 
+        </div>
+      </div>
+
+    </div> 
+  </div>
+
+
+  

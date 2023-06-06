@@ -1,0 +1,337 @@
+img {
+    vertical-align: middle;
+    border: 0;
+}
+img {
+    border: 0 none;
+    max-width: 100%;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+a {
+    color: #428bca;
+    text-decoration: none;
+}
+a {
+    color: #0655a6;
+    text-decoration: none;
+}
+user agent stylesheet 
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+}
+body {
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;  
+   
+  
+}
+
+html {
+    font-size: 62.5%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+html {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+*:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.headerxxx{
+    background: #f1f0f1;
+    border-bottom: 1px solid #d4d4d4;
+	padding: 10px 0;  
+    display: flex;
+}
+
+#home-page{
+   display: inline-block;
+}
+#home-page img{
+    width: 400px;
+}
+
+#search {
+    margin-left: 10px;
+    background: white;
+    border-radius: 20px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+
+#search input {
+    border: none;
+    outline: none;
+    background: none;
+    width: calc(100% - 20px);
+    height: 55px;  
+    margin-left: 16px;
+}
+
+
+#search button{
+    background: linear-gradient(#ff391e, #f91e00);
+    border: 1px solid #ea1c00;
+    width: 65px;
+    height: 50px;
+    border-radius: 0 20px 20px 0;
+    user-select: none; 
+   
+}
+
+#search button i{
+    color: white;
+   font-size: 21px;
+}
+#search button i:hover{
+    color: blue;
+}
+#function a{
+    color: #010101;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 11px;
+}
+
+#function img{
+    width: 32px;
+   margin: 10px;
+   margin-left: 30px;
+} 
+
+.pc{
+    background: #d7202c;
+    padding: 1px 20px;
+    color: #fff;
+    min-width: 100%;
+    line-height: 1.;
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+}
+.pc a{
+    color: white;
+    font-size: 20px;
+    margin: 18px;
+    padding: 0px;
+}
+.pc a:hover{
+    color: red;
+}
+
+ul.product{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+   padding: 13px;
+   
+}
+ul.product li{
+    flex-basis: 23%;
+    margin-top: 20px;
+}
+ul.product li .product-info a{
+    display: block;
+    text-decoration: none;
+    width: 100%; 
+    margin-left: 5px;
+}
+.product-price{
+    font-size: 20px;
+    color: #ed0000;
+    font-weight: 700;   
+}
+.product-name{
+    height: 60px;
+    font-size: 16px;
+    color: #333;
+}
+ul.product li .product-top a.buy-now{
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    background-color: black;
+    color: whitesmoke;
+    padding: 15px 0px;
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: 1.5s;
+}
+ul.product li .product-top .product-thumb img{
+    display: block;
+}
+ul.product li .product-top .product-thumb{
+    display: block;
+}
+ul.product li .product-top{
+   position: relative;
+   overflow: hidden;
+}
+ul.product li:hover a.buy-now{
+    opacity: 0.8;
+    bottom: 92px;
+ }
+.product-item{
+    border-width: 1px;
+    border-style: solid;
+    color: wheat;
+}
+.product-item:hover{
+    color: red;
+}
+
+
+
+
+
+
+.main {
+    padding: 20px 0;
+    background: url(../img/logo/bg-register.webp) no-repeat scroll left center #dedede;
+}
+
+
+.text-f{
+    font-size: 16px;
+    padding-top: 3px;
+    margin-left: 70px;
+}
+
+.f-email{
+    padding-right: 70px;
+}
+
+.f-email input{
+    width: 250px;
+    height: 30px;
+    margin: -5px;
+}
+.f-email input:hover{
+    border-color: #0655a6;
+}
+
+.f-email button{
+    border-color: #e02626;
+    background: #e02626;
+    color: #ffffff;
+    width: 70px;
+    height: 30px;
+}
+
+.f-email button:hover{
+    border-color: wheat;
+}
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+main {
+  position: relative;
+  padding: 1rem 1rem 3rem;
+  min-height: calc(100vh - 4rem);
+}
+
+.hidden {
+  display: none;
+}
+
+.pagination-container {
+  width: calc(100% - 2rem);
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  padding: 1rem 0;
+  justify-content: center;
+}
+
+.pagination-number,
+.pagination-button{
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: none;
+  margin: 0.25rem 0.25rem;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: .2rem;
+}
+
+.pagination-number:hover,
+.pagination-button:not(.disabled):hover {
+  background: #fff;
+}
+
+.pagination-number.active {
+  color: #fff;
+  background: #0085b6;
+}
+
+.content{
+    margin: 0  195px;  
+}
+.contentLaptop{
+    margin: 0  195px;  
+}
+
+#myBtnBackToTop{
+   height: 70px;
+   margin-right: 30px;
+   margin-top: 10px;
+   border: none;
+   background: #d7202c;
+   color: white;
+}
+
+#myBtnBackToTop:hover{
+     background: rgb(209, 199, 199);
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

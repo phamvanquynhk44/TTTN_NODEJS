@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <%- include('partial/linkData') %>
+    </head>
+
+    <body>
+
+      <% contentHeader.forEach(function(contentHeaderItem){ %>
+        <%- include(contentHeaderItem.view, contentHeaderItem.data) %>
+      <% }) %>
+
+      <% contentMenu.forEach(function(contentMenuItem){ %>
+        <%- include(contentMenuItem.view, contentMenuItem.data) %>
+      <% }) %>
+      
+
+      <% content.forEach(function(contentItem){ %>
+        <%- include(contentItem.view, contentItem.data) %>
+      <% }) %>
+      
+
+      <%- include('partial/footer') %>
+              
+    </body>
+    <script src="/js/home.js"></script>
+    <script src="/js/menu.js"></script>
+</html>

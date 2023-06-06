@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <%- include('partial/linkData') %>
+      <link rel="stylesheet" href="/css/collections.css">
+    </head>
+
+    <body>
+      
+      <% contentHeader.forEach(function(contentHeaderItem){ %>
+        <%- include(contentHeaderItem.view, contentHeaderItem.data) %>
+      <% }) %>
+          
+
+      <% contentMenu.forEach(function(contentMenuItem){ %>
+        <%- include(contentMenuItem.view, contentMenuItem.data) %>
+      <% }) %>
+
+        
+
+             <h1>
+              <% menubaner.forEach(function(item){ %>
+                <%= item.menu_name %>
+              <% }) %> 
+             </h1>
+             
+             <div class="dropdown-c">
+              <form action="/doSortCollections" method="post">
+              Sắp xếp theo:
+              <select class="select-c" name="sort">  
+                <% if(sort==0) { %>	
+                  <option value="0">Hiện tại: Sản phẩm nổi bậc</option>
+                <% } %>
+                <% if(sort==1) { %>	
+                  <option value="1">Hiện tại - Giá: Tăng dần</option>
+                <% } %>
+                <% if(sort==2) { %>	
+                  <option value="2">Hiện tại - Giá: Giảm dần</option>
+                <% } %>
+                <% if(sort==3) { %>	
+                  <option value="3">Hiện tại - Tên: A-Z</option> 
+                <% } %>
+                <% if(sort==4) { %>	
+                  <option value="4">Hiện tại - Tên: Z-A</option> 
+                <% } %>
+                <% if(sort==5) { %>	
+                  <option value="5">Hiện tại :Cũ nhất</option> 
+                <% } %>
+                <% if(sort==6) { %>	
+                  <option value="6">Hiện tại :Mới nhất</option> 
+                <% } %>
+                <% if(sort==7) { %>	
+                  <option value="7">Hiện tại :Bán chạy nhất</option>
+                <% } %>
+                  <option value="0">Sản phẩm nổi bậc</option>
+                  <option value="1">Giá: Tăng dần</option>
+                  <option value="2">Giá: Giảm dần</option>
+                  <option value="3">Tên: A-Z</option> 
+                  <option value="4">Tên: Z-A</option> 
+                  <option value="5">Cũ nhất</option> 
+                  <option value="6">Mới nhất</option> 
+                  <option value="7">Bán chạy nhất</option>   
+              </select>
+              <input type="hidden" name="id" value="<%= id %>">
+              <button>Sắp xếp</button>
+            </form>
+           </div>
+
+        
+      <% content.forEach(function(contentItem){ %>
+        <%- include(contentItem.view, contentItem.data) %>
+      <% }) %>
+
+
+              
+      <%- include('partial/footer') %>
+
+    </body>
+    <script src="/js/collections.js"></script>
+    <script src="/js/menu.js"></script>
+    <script src="/js/paginationCollections.js"></script>
+    <script>
+      var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+    </script>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/backend.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ 
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
+
+<script> 
+</script> 
+</head>
+<body>
+
+  <%- include('../partial/header') %>
+        <h1 style="text-align: center;">Quản lý danh mục</h1> 
+        <div class="functionb">
+          <a href="/catalogAdd/<%=token%>"><button class="btnb infob">Thêm</button></a>
+          <a href="/catalogTrash/<%=token%>"><button class="btnb warningb">Thùng rác</button></a>
+        </div>
+        
+      </div>
+
+      <div class="container">
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+              <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tên danh mục</th>
+                    <th>Ảnh</th>
+                    <th>Parent</th>
+                    <th>Chức năng</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <% catalog.forEach(function(catalog){ %>
+                  <tr>
+                      <td><%= catalog.id%></td>
+                      <td><%= catalog.menu_name%></td>
+      
+                      <td><img src="/img/logo/<%= catalog.img_logo_menu%>" style="width: 25px;"> </td>
+      
+                      <td>
+                      <% if(catalog.parent == 0 ) {%>
+                          <%= catalog.parent %> 
+                      <% } %>  
+                      <% allCat.forEach(function(Item){ %>
+                          <% if(Item.id == catalog.parent ) {%>
+                              <%= Item.menu_name %> 
+                          <% } %> 
+                          <% }) %>  
+                      </td>
+                      <td style="width:370px;">
+                        <% if(catalog.status == 0 ) {%>
+                        <a href="status/<%=token%>/<%= catalog.id%>/0"><button class="btnb dangerb">Tình trạng: tắt</button></a>
+                        <% } %>
+                        <% if(catalog.status == 1 ) {%>
+                          <a href="status/<%=token%>/<%= catalog.id%>/1"><button class="btnb successb">Tình trạng: mở</button></a>
+                          <% } %>
+                        <a href="edit/<%=token%>/<%= catalog.id%>"><button class="btnb infob">chỉnh sửa</button></a>
+                        <a href="delete/<%=token%>/<%= catalog.id%>"><button class="btnb dangerb">Xoá</button></a>                                         
+                      </td>
+                    </tr>       
+                  <% }) %>
+              </tbody>
+          </table>
+      </div>
+
+  </div>  
+</body>
+<script src="/js/backendP.js"></script>
+</html> 
